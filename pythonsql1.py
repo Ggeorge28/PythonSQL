@@ -48,7 +48,7 @@ class mySQL:
         pw = 'MIS4322student'
 
         preList = {}
-        courseList = {}
+        courseList = []
         cn_str = (
             'Driver={SQL Server};'
             'Server=MIS-SQLJB;'
@@ -65,6 +65,24 @@ class mySQL:
 
         data = cursor.fetchall()
 
-        print(data)
+        #print(data)
+        for course in data:
+            courseID = course[0]
+            title = course[1]
+            credits = course[2]
+            deptID = course[3]
 
+            preList = {'CourseID':courseID, 'Title':title, 'Credits':credits, 'DeptID':deptID}
+
+            courseList.append(preList)
+
+            #print(courseList)
+
+        a = int(input("enter Course ID: "))
+
+        for dictionary in courseList:
+            if a == dictionary['CourseID']:
+                print(f'Title: {dictionary["Title"]}')
+                print(f'Credits: {dictionary["Credits"]}')
+                print(f'Dept ID: {dictionary["DeptID"]}')
 sql = mySQL()
