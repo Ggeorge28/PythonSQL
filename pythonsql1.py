@@ -61,6 +61,10 @@ class mySQL:
         cn = pyodbc.connect(cn_str)
 
         cursor = cn.cursor()
-        cursor.execute ('Select * from School.dbo.Course')
+        cursor.execute ('select * from School.dbo.Course')
+
+        data = cursor.fetchall()
+
+        print(data)
 
 sql = mySQL()
