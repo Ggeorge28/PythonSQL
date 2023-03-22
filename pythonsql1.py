@@ -44,6 +44,9 @@ class mySQL:
 
         self.main_window.destroy()
 
+        login = 'grant_george1'
+        pw = 'MIS4322student'
+
         preList = {}
         courseList = {}
         cn_str = (
