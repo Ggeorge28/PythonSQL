@@ -86,3 +86,49 @@ class mySQL:
                 print(f'Credits: {dictionary["Credits"]}')
                 print(f'Dept ID: {dictionary["DeptID"]}')
 sql = mySQL()
+
+
+
+
+
+#
+# Define the percentage increase for each department
+budget_increase = {
+    'Engineering': 0.1,
+    'English': 0.1,
+    'Economics': 0.1,
+    'Mathematics': 0.1,
+    'Information Systems': 0.2,
+    'Computer Science': 0.15
+}
+
+# Define the original budget for each department
+budgets = {
+    'Engineering': 350000.00,
+    'English': 120000.00,
+    'Economics': 200000.00,
+    'Mathematics': 250000.00,
+    'Information Systems': 375000.00,
+    'Computer Science': 310500.00
+}
+
+# Calculate the new budget and increase in budget for each department
+new_budgets = {}
+budget_increases = {}
+for department, budget in budgets.items():
+    if department in budget_increase:
+        increase = budget_increase[department]
+    else:
+        increase = 0.1
+    new_budget = budget * (1 + increase)
+    budget_increase_amount = new_budget - budget
+    new_budgets[department] = new_budget
+    budget_increases[department] = budget_increase_amount
+
+# Print the report
+print('{:<25}{:<20}{:<20}{}'.format('Dept Name', 'Original Budget', 'New Budget', 'Increase in Budget'))
+for department, budget in budgets.items():
+    original_budget_str = '${:,.2f}'.format(budget)
+    new_budget_str = '${:,.2f}'.format(new_budgets[department])
+    increase_str = '${:,.2f}'.format(budget_increases[department])
+    print('{:<25}{:<20}{:<20}{}'.format(department, original_budget_str, new_budget_str, increase_str))
