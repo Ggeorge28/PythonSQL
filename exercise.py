@@ -43,8 +43,35 @@ Computer Science		$310,500.00			$357,075.00		$46,575.00
 
 cursor.execute ('select name, budget from school.dbo.Department')
 
+#data1 = cursor.fetchall()
+
+#for row in data1():
+ #  print(row)
+
+data = []
+
 for row in cursor.fetchall():
-    print(row)
+    name = row[0]
+    budget = float(row[1])
+    data.append((name,budget))
+
+print("{:<25} {:<20} {:<20} {:<20}".format('Dept Name', 'Original Budget', 'New Budget', 'Increase in Budget'))
+
+for item in data:
+    dept_name = item[0]
+    original_budget = item[1]
+
+
+    if dept_name == 'Information Systems':
+        increase_in_budget = original_budget * 0.2
+    elif dept_name == 'Computer Science':
+        increase_in_budget = original_budget * 0.15
+    else:
+        increase_in_budget = original_budget * 0.1
+    
+    new_budget = original_budget + increase_in_budget
+
+    print("{:<25} {:<20} {:<20} {:<20}".format(dept_name, f"${original_budget:,.2f}", f"${new_budget:,.2f}", f"${increase_in_budget:,.2f}"))
 
 
 
@@ -80,6 +107,4 @@ Kim			Abercrombie		(504) 621-8927	(410) 621-8927	(313) 621-8927
 Fadi		Fakhouri		(810) 292-9388	(215) 292-9388	(815) 292-9388
 
 '''
-
-
 
