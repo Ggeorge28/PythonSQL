@@ -41,8 +41,10 @@ Computer Science		$310,500.00			$357,075.00		$46,575.00
 
 '''
 
+cursor.execute ('select name, budget from school.dbo.Department')
 
-
+for row in cursor.fetchall():
+    print(row)
 
 
 
